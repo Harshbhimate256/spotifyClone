@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.cardContainer .playBtn{
+    opacity: 0;
+}
+.cardContainer:hover .playBtn{
+    opacity: 1;
+    transition:ease-in-out .3s;
+    transition-timing-function: linear;
+    top: 12vw;
+}
