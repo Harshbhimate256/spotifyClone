@@ -38,7 +38,7 @@ function App() {
     }
   };
   return (
-    <>
+    <div className="">
       <input
         type="text"
         className="w-[20vw] border-2 border-black mt-[2vw] px-5"
@@ -65,7 +65,7 @@ function App() {
           );
         })}
       </div>
-    </>
+    </div>
   );
 }
 

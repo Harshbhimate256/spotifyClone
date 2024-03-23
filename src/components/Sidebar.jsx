@@ -7,7 +7,7 @@ import { PiGlobe } from "react-icons/pi";
 
 function Sidebar() {
   return (
-    <div className="SBcontainer w-[20%] h-screen  flex flex-col p-1 gap-2">
+    <div className="SBcontainer w-[20%] h-screen  flex flex-col p-1 gap-2 fixed">
       <div className="p-5 bg-[#121212] rounded-xl flex flex-col gap-6">
         <div className="w-[6vw]">
           <a className="no-underline" href="#">
