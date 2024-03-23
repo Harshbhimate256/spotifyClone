@@ -18,7 +18,7 @@ function App() {
         numberOfTopResults: "5",
       },
       headers: {
-        "X-RapidAPI-Key": "your api key",
+        "X-RapidAPI-Key": "ed67f26ca5msh9836f59584af8d5p137bc6jsn2e0fb0b90074",
         "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
       },
     };
@@ -48,14 +48,14 @@ function App() {
           // console.log(input);
         }}
       />
-      <button onClick={call} className="border-black border-2 w-[5vw] ml-2">
+      <button onClick={call} className="border-white border-2 w-[5vw] ml-2 text-white">
         search
       </button>
-      <div className="text-white">
+      {/* <div className="text-white">
         {artists.map((item, index) => {
           return <p key={index}>{item.data.profile.name}</p>;
         })}
-      </div>
+      </div> */}
       <div className="CardContainer flex gap-10 mt-10 flex-wrap">
         {albums.map((item, index) => {
           return (

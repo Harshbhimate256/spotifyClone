@@ -1,11 +1,13 @@
 import React from 'react'
 import App from '../App'
 import Card from './Card'
+import Sidebar from './Sidebar'
 
 function Foreground() {
   return (
-    <div className='h-full w-full bg-zinc-600'>
-    <App /> 
+    <div className='h-screen w-full bg-black'>
+      <Sidebar/>
+    {/* <App /> */}
     </div>
   )
 }
