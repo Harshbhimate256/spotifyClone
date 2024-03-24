@@ -6,8 +6,8 @@ import HomeFeed from './HomeFeed'
 function MainContent() {
   return (
     <div className='MCcontainer w-[80%] ml-[20%] h-full p-1'>
-      {/* <SearchFeed/> */}
-      <HomeFeed/>
+      <SearchFeed/>
+      {/* <HomeFeed/> */}
     </div>
   )
 }

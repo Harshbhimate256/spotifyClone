@@ -11,3 +11,30 @@
     transition-timing-function: linear;
     top: 6.5vw;
 }
+.songsContainer .Liked{
+    opacity: 0;
+}
+.songsContainer .threeDots{
+    opacity: 0;
+}
+.songsContainer .hoverBannerPlayBtn{
+    opacity: 0;
+}
+.songsContainer:hover .Liked{
+    opacity: 1;
+}
+.songsContainer:hover .threeDots{
+    opacity: 1;
+}
+.songsContainer:hover .hoverBannerPlayBtn{
+    opacity: 1;
+}
+.topResult .topResultPlayBtn{
+    opacity: 0;
+}
+.topResult:hover .topResultPlayBtn{
+    opacity: 1;
+    top: 7.5vw;
+    transition:ease-in-out .2s;
+    transition-timing-function: linear;
+}
