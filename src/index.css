@@ -33,3 +33,6 @@
     transition:ease-in-out .2s;
     transition-timing-function: linear;
 }
+/* .searchForm input[type="text"]{
+    text-transform: lowercase;
+} */

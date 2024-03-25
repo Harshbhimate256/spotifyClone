@@ -8,7 +8,7 @@ import AfterSearch from "./AfterSearch";
 function SearchFeed({setInput,Call,data}) {
   return (
     <div className="SFcontainer h-screen bg-[#101010] rounded-xl overflow-hidden">
-      <div className="flex w-full p-4 gap-3 bg-transparent fixed rounded-xl items-center">
+      <div className="searchForm flex w-full p-4 gap-3 bg-transparent fixed rounded-xl items-center">
         <button className="flex items-center text-white bg-black rounded-full text-2xl h-10 w-10 justify-center">
           <FaChevronLeft />
         </button>
