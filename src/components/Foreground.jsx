@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import App from '../App'
 import Card from './Card'
 import Sidebar from './Sidebar'
 import MainContent from './MainContent'
 
-function Foreground() {
+function Foreground({apidata,setInput,Call}) {
+
+  const [showSearch, setshowSearch] = useState(false);
+    // console.log(showSearch)
   return (
     <div className='h-full w-full bg-black flex'>
-      <Sidebar/>
-      <MainContent/>
+      <Sidebar setshowSearch={setshowSearch}/>
+      <MainContent  showSearch={showSearch}  data={apidata} setinput={setInput} call={Call}/>
     {/* <App /> */}
     </div>
   )

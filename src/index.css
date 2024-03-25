@@ -11,15 +11,10 @@
     transition-timing-function: linear;
     top: 6.5vw;
 }
-.songsContainer .Liked{
+.songsContainer .Liked , .threeDots , .hoverBannerPlayBtn{
     opacity: 0;
 }
-.songsContainer .threeDots{
-    opacity: 0;
-}
-.songsContainer .hoverBannerPlayBtn{
-    opacity: 0;
-}
+
 .songsContainer:hover .Liked{
     opacity: 1;
 }

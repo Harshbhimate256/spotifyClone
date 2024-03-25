@@ -5,7 +5,8 @@ import { LuLibrary } from "react-icons/lu";
 import { LuPlus } from "react-icons/lu";
 import { PiGlobe } from "react-icons/pi";
 
-function Sidebar() {
+function Sidebar({setshowSearch}) {
+  
   return (
     <div className="SBcontainer w-[20%] h-screen  flex flex-col p-1 gap-2 fixed">
       <div className="p-5 bg-[#121212] rounded-xl flex flex-col gap-6">
@@ -18,15 +19,15 @@ function Sidebar() {
           </a>
         </div>
         <div className="text-[#797878] flex items-center">
-            <button className="flex w-full items-center gap-8 hover:text-white transition ease-in-out duration-500">
+            <button onClick={()=> setshowSearch(false)} className="flex w-full items-center gap-8 hover:text-white transition ease-in-out duration-500 ">
                 <GoHomeFill className="text-2xl"/>
-                <h1 className="text-md font-bold">Home</h1>
+                <h1 className="text-md font-bold ">Home</h1>
             </button>
         </div>
         <div className="text-[#797878] flex items-center">
-            <button className="flex w-full items-center gap-8 hover:text-white transition ease-in-out duration-500">
+            <button onClick={()=> setshowSearch(true)} className="flex w-full items-center gap-8 hover:text-white transition ease-in-out duration-500 ">
                 <ImSearch className="text-2xl"/>
-                <h1 className="text-md font-bold">Search</h1>
+                <h1 className="text-md font-bold ">Search</h1>
             </button>
         </div>
       </div>
