@@ -19,11 +19,7 @@ function App() {
         numberOfTopResults: "5",
       },
       headers: {
-<<<<<<< HEAD
-        "X-RapidAPI-Key": "cdc0348248msh0de0389cc35a5ebp1778e0jsnb920675ab045",
-=======
-        "X-RapidAPI-Key": "api key",
->>>>>>> c7b1c2914353032764855008f02c8a21e5df27a1
+        "X-RapidAPI-Key": "your api key",
         "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
       },
     };
