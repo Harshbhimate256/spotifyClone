@@ -7,6 +7,7 @@ import CircleCards from "./CircleCards";
 import { useSelector } from "react-redux";
 
 function AfterSearch({apidata}) {
+<<<<<<< HEAD
   // const apiData = useSelector((state) => state.apiData.apidata);
     const [topResult, settopResult] = useState([]);
     const [currBanner, setCurrBanner] = useState("")
@@ -22,11 +23,26 @@ function AfterSearch({apidata}) {
       setCurrBanner(topResult.data.albumOfTrack.coverArt.sources[0].url)
     }, [topResult])
     
+=======
+  const apiData = useSelector((state) => state.apiData.apidata);
+    const [topResult, settopResult] = useState([]);
+    const [currBanner, setCurrBanner] = useState("")
+    useEffect(() => {
+      if (apidata && apidata.tracks && apidata.tracks.items) {
+        settopResult(apidata.topResults.items[0]);
+        console.log(topResult)
+        if(topResult && topResult.length){  
+          console.log("new upad")
+          console.log(topResult.data.albumOfTrack.coverArt.sources[0].url)
+        setCurrBanner(topResult.data.albumOfTrack.coverArt.sources[0].url)}
+      }
+    }, [apidata]);
+>>>>>>> c7b1c2914353032764855008f02c8a21e5df27a1
     // console.log(apidata.topResults.items[0]);
     
   return (
     <div className="AScontainer flex flex-col bg-[#121212] mt-[8vh] p-4 text-white gap-10">
-      <div className="flex gap-3 fixed">
+      <div className="flex gap-3 fixed bg-[#121212]">
         <button className="bg-[#2A2A2A] rounded-full flex items-center text-md hover:bg-[#353535] py-1 px-4">
           All
         </button>
@@ -59,7 +75,11 @@ function AfterSearch({apidata}) {
           <div className='topResultPlayBtn absolute h-[6vh] w-[3vw] bg-green-500 rounded-full left-[15vw] top-[8.5vw] hover:scale-105 hover:bg-green-400'><FaPlay className='w-1/2 h-1/2 translate-x-1/2 translate-y-1/2 text-black'/></div>
             <div className="h-[12vh] w-[6vw]">
               <img
+<<<<<<< HEAD
                 src={currBanner || "../testBanner.jpg"}
+=======
+                src={currBanner || "../testbanner.jpg"}
+>>>>>>> c7b1c2914353032764855008f02c8a21e5df27a1
                 className="w-full h-full rounded-xl"
               />
             </div>
