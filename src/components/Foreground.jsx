@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import App from "../App";
-import { useDispatch, useSelector } from "react-redux";
-import { setApiData } from "../store/apiDataSlice";
 import axios from "axios";
 import Card from "./Card";
 import Sidebar from "./Sidebar";
