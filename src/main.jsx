@@ -7,5 +7,5 @@ import Foreground from './components/Foreground.jsx'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <App/>
-  </React.StrictMode>
+  </React.StrictMode> 
 )

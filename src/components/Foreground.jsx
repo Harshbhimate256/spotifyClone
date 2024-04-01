@@ -7,6 +7,7 @@ import MainContent from './MainContent'
 function Foreground({apidata,setInput,Call}) {
 
   const [showSearch, setshowSearch] = useState(false);
+  
     // console.log(showSearch)
   return (
     <div className='h-full w-full bg-black flex'>

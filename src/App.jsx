@@ -5,7 +5,7 @@ import Foreground from "./components/Foreground";
 function App() {
   const [input, setinput] = useState("");
   // const [coverArt, setcoverArt] = useState("");
-  const [albums, setalbums] = useState([]);
+  // const [albums, setalbums] = useState([]);
   const [apiData, setapiData] = useState([]);
   const call = async () => {
     const options = {
@@ -19,7 +19,7 @@ function App() {
         numberOfTopResults: "5",
       },
       headers: {
-        "X-RapidAPI-Key": "your api",
+        "X-RapidAPI-Key": "cdc0348248msh0de0389cc35a5ebp1778e0jsnb920675ab045",
         "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
       },
     };
@@ -27,9 +27,9 @@ function App() {
       const response = await axios.request(options);
       const data = response.data;
       setapiData(data);
-      const albumData = data.albums.items;
-      setalbums(albumData);
-      console.log(apiData);
+      // const albumData = data.albums.items;
+      // setalbums(albumData);
+      // console.log(apiData);
     } catch (error) {
       console.error(error.response);
     }

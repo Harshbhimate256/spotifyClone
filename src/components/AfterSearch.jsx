@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { FaPlay } from "react-icons/fa";
 import Cards from "./Cards";
 import CircleCards from "./CircleCards";
+import { useSelector } from "react-redux";
 
-function AfterSearch() {
+function AfterSearch({apidata}) {
+  // const apiData = useSelector((state) => state.apiData.apidata);
+    const [topResult, settopResult] = useState([]);
+    const [currBanner, setCurrBanner] = useState("")
+    // console.log(apidata)
+    useEffect(() => {
+      if (apidata && apidata.tracks && apidata.tracks.items) {
+        settopResult(apidata.topResults.items[0]);
+      }
+    }, [apidata]);
+    useEffect(()=>{
+      console.log(topResult)
+      if(topResult.data)
+      setCurrBanner(topResult.data.albumOfTrack.coverArt.sources[0].url)
+    }, [topResult])
+    
+    // console.log(apidata.topResults.items[0]);
+    
   return (
     <div className="AScontainer flex flex-col bg-[#121212] mt-[8vh] p-4 text-white gap-10">
       <div className="flex gap-3 fixed">
@@ -31,6 +49,7 @@ function AfterSearch() {
           Profiles
         </button>
       </div>
+      
       <div className="flex gap-3 mt-16">
         <div className="w-[25%]  flex flex-col gap-10 p-1">
           <div className="text-white font-bold text-2xl">
@@ -40,7 +59,7 @@ function AfterSearch() {
           <div className='topResultPlayBtn absolute h-[6vh] w-[3vw] bg-green-500 rounded-full left-[15vw] top-[8.5vw] hover:scale-105 hover:bg-green-400'><FaPlay className='w-1/2 h-1/2 translate-x-1/2 translate-y-1/2 text-black'/></div>
             <div className="h-[12vh] w-[6vw]">
               <img
-                src="../testbanner.jpg"
+                src={currBanner || "../testBanner.jpg"}
                 className="w-full h-full rounded-xl"
               />
             </div>
@@ -221,6 +240,7 @@ function AfterSearch() {
           <CircleCards/>
         </div>
       </div>
+      
     </div>
   );
 }
