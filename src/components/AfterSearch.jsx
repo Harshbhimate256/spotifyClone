@@ -5,6 +5,7 @@ import { FaPlay } from "react-icons/fa";
 import Cards from "./Cards";
 import CircleCards from "./CircleCards";
 import { useSelector } from "react-redux";
+import AlbumCards from "./AlbumCards";
 
 function AfterSearch({apidata}) {
   // const apiData = useSelector((state) => state.apiData.apidata);
@@ -14,6 +15,8 @@ function AfterSearch({apidata}) {
     const [TRtrackName, setTRtrackName] = useState("");
     const [Tracks, setTracks] = useState([]);
     const [Playlist, setPlaylist] = useState([]);
+    const [Artist, setArtist] = useState([]);
+    const [Albums, setAlbums] = useState([]);
     // console.log(apidata)
     useEffect(() => {
       if (apidata && apidata.tracks && apidata.tracks.items) {
@@ -30,6 +33,16 @@ function AfterSearch({apidata}) {
         setPlaylist(apidata.playlists.items);
       }
     }, [apidata]); //playlist data
+    useEffect(() => {
+      if (apidata && apidata.artists && apidata.artists.items) {
+        setArtist(apidata.artists.items);
+      }
+    }, [apidata]);//artist data
+    useEffect(() => {
+      if (apidata && apidata.albums && apidata.albums.items) {
+        setAlbums(apidata.albums.items);
+      }
+    }, [apidata]); //albums data
     useEffect(()=>{
       // console.log(topResult)
       if(topResult.data)
@@ -45,7 +58,7 @@ function AfterSearch({apidata}) {
       setTRtrackName(topResult.data.name);
     }, [topResult]) //track name data
     // console.log(Tracks)
-    // console.log(Playlist);
+    // console.log(Artist);
   return (
     <div className="AScontainer flex flex-col bg-[#121212] mt-[8vh] p-4 text-white gap-10">
       <div className="categoryRibbon flex gap-3 fixed bg-[#121212]">
@@ -258,16 +271,22 @@ function AfterSearch({apidata}) {
           {Playlist.slice(0,4).map((item,index)=>(
             <Cards items={item} key={index}/>
           ))}
-          {/* <Cards/>
-          <Cards/>
-          <Cards/>
-          <Cards/> */}
         </div>
       </div>
       <div className="flex flex-col gap-3">
         <div className="text-white font-bold text-2xl"><h1>Artists</h1></div>
         <div className="flex gap-1">
-          <CircleCards/>
+          {Artist.slice(0,4).map((item,index)=>(
+            <CircleCards items={item} key={index}/>
+          ))}
+        </div>
+      </div>
+      <div className="flex flex-col gap-3">
+        <div className="text-white font-bold text-2xl"><h1>Albums</h1></div>
+        <div className="flex gap-1">
+        {Albums.slice(0,8).map((item,index)=>(
+            <AlbumCards items={item} key={index}/>
+          ))}
         </div>
       </div>
       
