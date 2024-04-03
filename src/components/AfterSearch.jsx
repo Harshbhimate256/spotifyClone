@@ -6,6 +6,8 @@ import Cards from "./Cards";
 import CircleCards from "./CircleCards";
 import { useSelector } from "react-redux";
 import AlbumCards from "./AlbumCards";
+import PlaylistCards from "./PlaylistCards";
+import PodcastCards from "./PodcastCards";
 
 function AfterSearch({apidata}) {
   // const apiData = useSelector((state) => state.apiData.apidata);
@@ -17,6 +19,7 @@ function AfterSearch({apidata}) {
     const [Playlist, setPlaylist] = useState([]);
     const [Artist, setArtist] = useState([]);
     const [Albums, setAlbums] = useState([]);
+    const [Podcast, setPodcast] = useState([]);
     // console.log(apidata)
     useEffect(() => {
       if (apidata && apidata.tracks && apidata.tracks.items) {
@@ -43,6 +46,11 @@ function AfterSearch({apidata}) {
         setAlbums(apidata.albums.items);
       }
     }, [apidata]); //albums data
+    useEffect(() => {
+      if (apidata && apidata.podcasts && apidata.podcasts.items) {
+        setPodcast(apidata.podcasts.items);
+      }
+    }, [apidata]);
     useEffect(()=>{
       // console.log(topResult)
       if(topResult.data)
@@ -286,6 +294,22 @@ function AfterSearch({apidata}) {
         <div className="flex gap-1">
         {Albums.slice(0,8).map((item,index)=>(
             <AlbumCards items={item} key={index}/>
+          ))}
+        </div>
+      </div>
+      <div className="flex flex-col gap-3">
+        <div className="text-white font-bold text-2xl"><h1>Playlists</h1></div>
+        <div className="flex gap-1">
+        {Playlist.slice(5,13).map((item,index)=>(
+            <PlaylistCards items={item} key={index}/>
+          ))}
+        </div>
+      </div>
+      <div className="flex flex-col gap-3">
+        <div className="text-white font-bold text-2xl"><h1>Podcasts</h1></div>
+        <div className="flex gap-1">
+        {Podcast.slice(0,8).map((item,index)=>(
+            <PodcastCards items={item} key={index}/>
           ))}
         </div>
       </div>

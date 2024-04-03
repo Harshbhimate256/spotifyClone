@@ -15,11 +15,11 @@ function App() {
         q: `${input}`,
         type: "multi",
         offset: "0",
-        limit: "10",
+        limit: "20",
         numberOfTopResults: "5",
       },
       headers: {
-        "X-RapidAPI-Key": "your api",
+        "X-RapidAPI-Key": "cdc0348248msh0de0389cc35a5ebp1778e0jsnb920675ab045",
         "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
       },
     };
