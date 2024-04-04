@@ -8,9 +8,15 @@ import { useSelector } from "react-redux";
 import AlbumCards from "./AlbumCards";
 import PlaylistCards from "./PlaylistCards";
 import PodcastCards from "./PodcastCards";
+import { BiLogoInstagram } from "react-icons/bi";
+import { FaLinkedin } from "react-icons/fa6";
+import { IoIosHeart } from "react-icons/io";
+
 
 function AfterSearch({apidata}) {
   // const apiData = useSelector((state) => state.apiData.apidata);
+
+    const [Like, setLike] = useState(null);
     const [topResult, settopResult] = useState([]);
     const [currBanner, setCurrBanner] = useState("");
     const [TRartistName, setTRartistName] = useState("");
@@ -20,12 +26,26 @@ function AfterSearch({apidata}) {
     const [Artist, setArtist] = useState([]);
     const [Albums, setAlbums] = useState([]);
     const [Podcast, setPodcast] = useState([]);
+    const [Featured, setFeatured] = useState([]);
+    const toggleLike = (index)=>{
+      if(Like === index){
+        setLike(null);
+      }
+      else{
+        setLike(index);
+      }
+    }
     // console.log(apidata)
     useEffect(() => {
       if (apidata && apidata.tracks && apidata.tracks.items) {
         settopResult(apidata.topResults.items[0]);
       }
     }, [apidata]); //topresult data
+    useEffect(() => {
+      if (apidata && apidata.topResults && apidata.topResults.featured) {
+        setFeatured(apidata.topResults.featured);
+      }
+    }, [apidata]); //featured data
     useEffect(() => {
       if (apidata && apidata.tracks && apidata.tracks.items) {
         setTracks(apidata.tracks.items);
@@ -94,7 +114,7 @@ function AfterSearch({apidata}) {
       </div>
       
       <div className="flex gap-3 mt-16">
-        <div className="w-[25%]  flex flex-col gap-10 p-1">
+        <div className="topResult w-[25%]  flex flex-col gap-10 p-1">
           <div className="text-white font-bold text-2xl">
             <h1>Top result</h1>
           </div>
@@ -115,7 +135,6 @@ function AfterSearch({apidata}) {
             </div>
           </div>
         </div>
-
         <div className="Tracks w-[75%]  p-1 flex-col flex gap-2">
           <div className="text-white font-bold text-2xl">
             <h1>Songs</h1>
@@ -149,8 +168,10 @@ function AfterSearch({apidata}) {
               </div>
               <div className="flex gap-10 justify-center items-center px-4">
                 <div className="Liked flex items-center">
-                  <button>
-                    <IoIosHeartEmpty className="text-xl text-[#afafaf] hover:text-[#ffffff] " />
+                  <button onClick={()=> toggleLike(index)}>
+                    {Like===index ?(<IoIosHeart className="text-xl text-[#afafaf] hover:text-[#ffffff] " /> ) : 
+                    (<IoIosHeartEmpty className="text-xl text-[#afafaf] hover:text-[#ffffff] " />)
+                    }
                   </button>
                 </div>
                 <div className="text-[#bababa]">{(item.data.duration.totalMilliseconds/60000).toFixed(2)}</div>
@@ -273,15 +294,15 @@ function AfterSearch({apidata}) {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-3">
+      <div className="Featuring flex flex-col gap-3">
         <div className="text-white font-bold text-2xl"><h1>Featuring</h1></div>
         <div className="flex gap-1">
-          {Playlist.slice(0,4).map((item,index)=>(
+          {Featured.map((item,index)=>(
             <Cards items={item} key={index}/>
           ))}
         </div>
       </div>
-      <div className="flex flex-col gap-3">
+      <div className="Artist flex flex-col gap-3">
         <div className="text-white font-bold text-2xl"><h1>Artists</h1></div>
         <div className="flex gap-1">
           {Artist.slice(0,4).map((item,index)=>(
@@ -289,7 +310,7 @@ function AfterSearch({apidata}) {
           ))}
         </div>
       </div>
-      <div className="flex flex-col gap-3">
+      <div className="Albums flex flex-col gap-3">
         <div className="text-white font-bold text-2xl"><h1>Albums</h1></div>
         <div className="flex gap-1">
         {Albums.slice(0,8).map((item,index)=>(
@@ -297,15 +318,15 @@ function AfterSearch({apidata}) {
           ))}
         </div>
       </div>
-      <div className="flex flex-col gap-3">
+      <div className="Playlist flex flex-col gap-3">
         <div className="text-white font-bold text-2xl"><h1>Playlists</h1></div>
         <div className="flex gap-1">
-        {Playlist.slice(5,13).map((item,index)=>(
+        {Playlist.slice(0,8).map((item,index)=>(
             <PlaylistCards items={item} key={index}/>
           ))}
         </div>
       </div>
-      <div className="flex flex-col gap-3">
+      <div className="Podcast flex flex-col gap-3">
         <div className="text-white font-bold text-2xl"><h1>Podcasts</h1></div>
         <div className="flex gap-1">
         {Podcast.slice(0,8).map((item,index)=>(
@@ -313,7 +334,6 @@ function AfterSearch({apidata}) {
           ))}
         </div>
       </div>
-      
     </div>
   );
 }
